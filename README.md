@@ -4,4 +4,4 @@ the Craft Academy web development bootcamp in Sweden (https://craftacademy.se/en
 This is my first attemp to create a simple static website.
 In time, as my knowledge grows, I will add new features.
 
-raptorf1.github.io
+## https://raptorf1.github.io/
