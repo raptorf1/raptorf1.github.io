@@ -1,8 +1,8 @@
 require 'net/http'
 require 'json'
 
-# Call Bitstamp API to learn BTC / EURO price
-url = 'https://www.bitstamp.net/api/v2/ticker/btceur'
+# Call Bitstamp API to learn BTC / USD price
+url = 'https://www.bitstamp.net/api/v2/ticker/btcusd'
 uri = URI(url)
 response = Net::HTTP.get(uri)
 result = JSON.parse(response)
@@ -15,8 +15,8 @@ response2 = Net::HTTP.get(uri2)
 resultA = JSON.parse(response2)
 fldcprice = resultA["result"]["Bid"].to_f
 
-# Ask business owner to put the desired amount in EURO
-puts "Please put the amount to be paid in EURO:"
+# Ask business owner to put the desired amount in US Dollars
+puts "Please put the amount to be paid in USD:"
 amount = gets.chomp.to_f
 
 # Calculate amount to be paid by customer in BTC using data from Bitstamp's API plus convertion commisions
