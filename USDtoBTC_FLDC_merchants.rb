@@ -19,16 +19,22 @@ fldcprice = resultA["result"]["Bid"].to_f
 puts "Please put the amount to be paid in USD:"
 amount = gets.chomp.to_f
 
-# Calculate amount to be paid by customer in BTC using data from Bitstamp's API plus convertion commisions
+# If the output is not an amount then the appropriate message is shown
+if amount == 0 then p "You did not enter a valid amount! Please try again."
+
+# If the output is an amount then calculate amount to be paid by customer in BTC using data from Bitstamp's API plus convertion commisions
+else
 amount2 = amount + 0.90
 topay = (amount2 / btcprice)
 topay2 = topay * 0.015 + topay
 topayfinalBTC = topay2.round(8)
 
 # Calculate amount to be paid by customer in FLDC using the BTC amount above and Bittrex API plus convertion commisions
-amount3 = topayfinalBTC / fldcprice
+amount3 = topay2 / fldcprice
 topay3 = amount3 * 0.1 + amount3
 topayfinalfldc = topay3.round
 
 # Print the results for both BTC and FLDC on screen
 p "The amount due is #{topayfinalBTC} BTC or #{topayfinalfldc} FLDC."
+
+end
