@@ -10,6 +10,19 @@
 
 a:hover {color: coral}
 
+button {
+  font: bold 16px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid rgb(226, 10, 10);
+  border-right: 1px solid rgb(226, 10, 10);
+  border-bottom: 1px solid rgb(226, 10, 10);
+  border-left: 1px solid rgb(226, 10, 10);
+  cursor: pointer;
+}
+
 .row::after {
   content: "";
   clear: both;
@@ -106,6 +119,10 @@ html {
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+
+input[type=number]:focus {background-color: yellow;
+}
+
 </style>
 </head>
 <body>
@@ -126,12 +143,33 @@ html {
   </div>
 
   <div class="col-6 col-s-9">
-    <h1>About Me</h1>
-    <p>MY name is George and I am attending the Web Developer bootcamp of
-      <a href = https://craftacademy.se/english/ target = "_blank">Craft Academy</a> in Sweden. This is my first attemp to
-      create a simple website. In time, as my knowledge grows, I will be adding more features.<br><br>FOR the moment,
-      you can access the caterogies from the menu.<br><br>
-      THANK you for visiting.</p>
+    <h1>Calculate your <i>BMI</i> with a click!</h1>
+    <p>Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women.</p>
+    <p><u>BMI Categories:</u></p>
+    <ul>
+      <li>Underweight =< 18.5</li>
+      <li>Normal weight = 18.5–24.9</li>
+      <li>Overweight = 25–29.9</li>
+      <li>Obesity = BMI of 30 or greater</li>
+    </ul>
+    <br>
+    <p>Depending on the measurement system you are accustomed to (Imperial or Metric), fill in the appropriate boxes below <b>with numbers</b>,
+      following the inbox instructions, and hit the calculate button next to them.</p>
+    <br>
+    <p><u><i>Metric System</i></u></p>
+    <input type="number" min="0.01" step="0.01" placeholder="your weight in KG" id="metweight" autofocus>
+    <input type="number" min="0.01" step="0.01" placeholder="your height in CM" id="metheight">
+    <input type="button" onclick="messageMET()" id="metbutton" value="Calculate">
+    <a href="bmi.html"><button>Reset</button></a>
+    <br>
+    <p><u><i>Imperial System</i></u></p>
+    <input type="number" min="0.01" step="0.01" placeholder="your weight in KG" id="2metweight">
+    <input type="number" min="0.01" step="0.01" placeholder="your height in M" id="3metheight">
+    <input type="number" min="0.01" step="0.01" placeholder="your height in M" id="4metheight">
+    <input type="button" onclick="" value="Calculate">
+    <a href="bmi.html"><button>Reset</button></a>
+
+    
   </div>
 
   <div class="col-3 col-s-12">
@@ -165,8 +203,40 @@ html {
     <img border="3" alt="GitHub Profile" src="github.png" width="30" height="30">
     </a>
 
-  <img src="https://www.codewars.com/users/raptorf1/badges/micro" alt="Codewars Badge"</img>
+  <img src="https://www.codewars.com/users/raptorf1/badges/micro" alt="Codewars Badge" height="30"</img>
 </div>
+
+<script>
+  var input = document.getElementById("metheight");
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("metbutton").click();
+      }
+  });    
+    
+    function messageMET() {
+      var weight = document.getElementById("metweight").value;
+      var height = document.getElementById("metheight").value;
+      var w = Number(weight);
+      var h = Number(height);
+      
+      if (w > 0 && h > 0) {
+        var bmimet = w / (h / 100 * h / 100);
+        var finalbmimet = parseFloat(bmimet.toFixed(2));
+        message();
+      }
+
+      function message() {
+      if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight");}
+      else if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
+      else if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
+      else if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
+      }
+
+      window.location.reload(true);
+    }
+</script>
 
 </body>
 </html>
