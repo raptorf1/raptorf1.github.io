@@ -215,27 +215,32 @@ input[type=number]:focus {background-color: yellow;
       }
   });    
     
-    function messageMET() {
-      var weight = document.getElementById("metweight").value;
-      var height = document.getElementById("metheight").value;
-      var w = Number(weight);
-      var h = Number(height);
+  function messageMET() {
+    var weight = document.getElementById("metweight").value;
+    var height = document.getElementById("metheight").value;
+    var w = Number(weight);
+    var h = Number(height);
       
-      if (w > 0 && h > 0) {
-        var bmimet = w / (h / 100 * h / 100);
-        var finalbmimet = parseFloat(bmimet.toFixed(2));
-        message();
-      }
-
-      function message() {
-      if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight");}
-      else if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
-      else if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
-      else if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
-      }
-
-      window.location.reload(true);
+    if (w < 0 || h < 0) {
+      alert("Please input a number greater than 0 in both fields!");
     }
+
+    if (w > 0 && h > 0) {
+      var bmimet = w / (h / 100 * h / 100);
+      var finalbmimet = parseFloat(bmimet.toFixed(2));
+      message();
+    }
+
+    function message() {
+    if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight");}
+    if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
+    if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
+    if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
+    }
+
+  window.location.reload(true);
+  }
+
 </script>
 
 </body>
