@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 <title>My First Website - BMI Calculator</title>
 <style>
 * {
@@ -144,14 +144,15 @@ input[type=number]:focus {background-color: yellow;
 
   <div class="col-6 col-s-9">
     <h1>Calculate your <i>BMI</i> with a click!</h1>
-    <p>Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women.</p>
+    <p>Body Mass Index (BMI) is a measure of body fat based on height and weight that applies to adult men and women.</p>
     <p><u>BMI Categories:</u></p>
     <ul>
-      <li>Underweight =< 18.5</li>
-      <li>Normal weight = 18.5–24.9</li>
-      <li>Overweight = 25–29.9</li>
-      <li>Obesity = BMI of 30 or greater</li>
+      <li>Underweight < 18.5</li>
+      <li>Normal weight = 18.5 to 24.9</li>
+      <li>Overweight = 25 to 29.9</li>
+      <li>Obesity = 30 or greater</li>
     </ul>
+    <br>
     <br>
     <p>Depending on the measurement system you are accustomed to (Imperial or Metric), fill in the appropriate boxes below <b>with numbers</b>,
       following the inbox instructions, and hit the calculate button next to them.</p>
@@ -161,6 +162,7 @@ input[type=number]:focus {background-color: yellow;
     <input type="number" min="0.01" step="0.01" placeholder="your height in CM" id="metheight">
     <input type="button" onclick="messageMET()" id="metbutton" value="Calculate">
     <a href="bmi.html"><button>Reset</button></a>
+    <br>
     <br>
     <p><u><i>Imperial System</i></u></p>
     <input type="number" min="0.01" step="0.01" placeholder="your weight in KG" id="2metweight">
@@ -238,7 +240,7 @@ input[type=number]:focus {background-color: yellow;
     if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
     }
 
-  window.location.reload(true);
+    window.location.reload(true);
   }
 
 </script>
