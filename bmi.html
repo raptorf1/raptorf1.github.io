@@ -236,8 +236,11 @@ input[type=number]:focus {background-color: yellow;
     function ifmessagemetric() {
     if (finalbmimet == 0) {alert ("Please put realistic numbers!");}
     if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight");}
+    if (finalbmimet == 18.5) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
     if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
+    if (finalbmimet == 25) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
     if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
+    if (finalbmimet == 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
     if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
     }
 
