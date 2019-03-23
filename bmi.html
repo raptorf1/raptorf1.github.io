@@ -223,17 +223,18 @@ input[type=number]:focus {background-color: yellow;
     var w = Number(weight);
     var h = Number(height);
       
-    if (w < 0 || h < 0) {
-      alert("Please input a number greater than 0 in both fields!");
+    if (w < 0 || h < 0 || w == 0 || h == 0) {
+      alert("Please put numbers greater than 0 in both fields!");
     }
 
     if (w > 0 && h > 0) {
       var bmimet = w / (h / 100 * h / 100);
       var finalbmimet = parseFloat(bmimet.toFixed(2));
-      message();
+      ifmessagemetric();
     }
 
-    function message() {
+    function ifmessagemetric() {
+    if (finalbmimet == 0) {alert ("Please put realistic numbers!");}
     if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight");}
     if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
     if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
