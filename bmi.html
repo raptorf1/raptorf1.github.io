@@ -120,7 +120,19 @@ html {
   .col-12 {width: 100%;}
 }
 
-input[type=number]:focus {background-color: yellow;
+input[type=number]:focus {background-color: yellow;}
+
+input[type=button] {
+  background-color: green;
+  color: white;
+  font: bold 16px Arial;
+  text-decoration: none;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid whitesmoke;
+  border-right: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
+  border-left: 1px solid whitesmoke;
+  cursor: pointer;
 }
 
 </style>
@@ -158,17 +170,17 @@ input[type=number]:focus {background-color: yellow;
       following the inbox instructions, and hit the calculate button next to them.</p>
     <br>
     <p><u><i>Metric System</i></u></p>
-    <input type="number" min="0.01" step="0.01" placeholder="your weight in KG" id="metweight" autofocus>
-    <input type="number" min="0.01" step="0.01" placeholder="your height in CM" id="metheight">
+    <input type="number" min="0.01" step="0.01" placeholder="weight in KG" id="metweight" autofocus>
+    <input type="number" min="0.01" step="0.01" placeholder="height in CM" id="metheight">
     <input type="button" onclick="messageMET()" id="metbutton" value="Calculate">
     <a href="bmi.html"><button>Reset</button></a>
     <br>
     <br>
     <p><u><i>Imperial System</i></u></p>
-    <input type="number" min="0.01" step="0.01" placeholder="your weight in KG" id="2metweight">
-    <input type="number" min="0.01" step="0.01" placeholder="your height in M" id="3metheight">
-    <input type="number" min="0.01" step="0.01" placeholder="your height in M" id="4metheight">
-    <input type="button" onclick="" value="Calculate">
+    <input type="number" min="0.01" step="0.01" placeholder="weight in Pounds" id="impweight">
+    <input type="number" min="0.01" step="0.01" placeholder="height in Feet" id="impheightf">
+    <input type="number" min="0" step="0.01" placeholder="height in Inches" id="impheighti">
+    <input type="button" onclick="messageIMP()" id="impbutton" value="Calculate">
     <a href="bmi.html"><button>Reset</button></a>
 
     
@@ -209,14 +221,30 @@ input[type=number]:focus {background-color: yellow;
 </div>
 
 <script>
-  var input = document.getElementById("metheight");
-  input.addEventListener("keyup", function(event) {
+  var inputmet = document.getElementById("metheight");
+  inputmet.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
       document.getElementById("metbutton").click();
       }
-  });    
-    
+  });
+
+  var inputimpf = document.getElementById("impheightf");
+  inputimpf.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("impbutton").click();
+      }
+  });
+
+  var inputimpi = document.getElementById("impheighti");
+  inputimpi.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("impbutton").click();
+      }
+  });
+
   function messageMET() {
     var weight = document.getElementById("metweight").value;
     var height = document.getElementById("metheight").value;
@@ -235,13 +263,47 @@ input[type=number]:focus {background-color: yellow;
 
     function ifmessagemetric() {
     if (finalbmimet == 0) {alert ("Please put realistic numbers!");}
-    if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight");}
-    if (finalbmimet == 18.5) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
-    if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy");}
-    if (finalbmimet == 25) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
-    if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight");}
-    if (finalbmimet == 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
-    if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese");}
+    if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight. Pay regular visits to your fridge.");}
+    if (finalbmimet == 18.5) {alert("Your BMI is " + finalbmimet + " and your status is Healthy. Right on! Kudos my friend!");}
+    if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy. Right on! Kudos my friend!");}
+    if (finalbmimet == 25) {alert("Your BMI is " + finalbmimet + " and your status is Overweight. Time for the gym subscription you always talked about.");}
+    if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight. Time for the gym subscription you always talked about.");}
+    if (finalbmimet == 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese. Go spend one year at the nearest monastery.");}
+    if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese. Go spend one year at the nearest monastery.");}
+    }
+
+    window.location.reload(true);
+  }
+
+  function messageIMP() {
+    var weightimp = document.getElementById("impweight").value;
+    var heightimpf = document.getElementById("impheightf").value;
+    var heightimpi = document.getElementById("impheighti").value;
+    var wimp = Number(weightimp);
+    var himpf = Number(heightimpf);
+    var himpi = Number(heightimpi);
+      
+    if (wimp < 0 || himpf < 0 || wimp == 0 || himpf == 0 || himpi < 0) {
+      alert("Please put numbers greater than 0 in the weight and feet height fields!");
+    }
+
+    if (wimp > 0 && himpf > 0) {
+      var finalimpheightinches = himpf * 12 + himpi;
+      var finalimpweightpounds = wimp * 703;
+      var bmiimp = finalimpweightpounds / (finalimpheightinches * finalimpheightinches);
+      var finalbmiimp = parseFloat(bmiimp.toFixed(2));
+      ifmessageimperial();
+    }
+
+    function ifmessageimperial() {
+    if (finalbmiimp == 0) {alert ("Please put realistic numbers!");}
+    if (finalbmiimp > 0 && finalbmiimp < 18.5) {alert ("Your BMI is " + finalbmiimp + " and your status is Underweight. Pay regular visits to your fridge.");}
+    if (finalbmiimp == 18.5) {alert("Your BMI is " + finalbmiimp + " and your status is Healthy. Right on! Kudos my friend!");}
+    if (finalbmiimp > 18.5 && finalbmiimp < 25) {alert("Your BMI is " + finalbmiimp + " and your status is Healthy. Right on! Kudos my friend!");}
+    if (finalbmiimp == 25) {alert("Your BMI is " + finalbmiimp + " and your status is Overweight. Time for the gym subscription you always talked about.");}
+    if (finalbmiimp > 25 && finalbmiimp < 30) {alert("Your BMI is " + finalbmiimp + " and your status is Overweight. Time for the gym subscription you always talked about.");}
+    if (finalbmiimp == 30) {alert("Your BMI is " + finalbmiimp + " and your status is Obese. Go spend one year at the nearest monastery.");}
+    if (finalbmiimp > 30) {alert("Your BMI is " + finalbmiimp + " and your status is Obese. Go spend one year at the nearest monastery.");}
     }
 
     window.location.reload(true);
