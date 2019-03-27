@@ -5,8 +5,11 @@
 <title>My First Website - BMI Calculator</title>
 <link rel="stylesheet" type="text/css" href="my1stwebsite.css">
 <script src="bmi.js"></script>
+<script src="toTop.js"></script>
 </head>
 <body>
+
+<button onclick="topFunction()" id="top" title="Top of Page">Top of Page</button>
 
 <div class="header">
   <h1>BMI Calculator</h1>
@@ -39,7 +42,7 @@
       following the inbox instructions, and hit the calculate button next to them.</p>
     <br>
     <p><u><i>Metric System</i></u></p>
-    <input type="number" min="0.01" step="0.01" placeholder="weight in KG" id="metweight" autofocus>
+    <input type="number" min="0.01" step="0.01" placeholder="weight in KG" id="metweight">
     <input type="number" min="0.01" step="0.01" placeholder="height in CM" id="metheight">
     <input type="button" onclick="messageMET()" id="metbutton" value="Calculate">
     <a href="bmi.html"><button>Reset</button></a>
@@ -86,7 +89,7 @@
     <img border="3" alt="GitHub Profile" src="github.png" width="30" height="30">
     </a>
 
-  <img src="https://www.codewars.com/users/raptorf1/badges/micro" alt="Codewars Badge" height="30" style="float:right"></img>
+  <img src="https://www.codewars.com/users/raptorf1/badges/micro" alt="Codewars Badge" height="30"></img>
 </div>
 
 <script>
