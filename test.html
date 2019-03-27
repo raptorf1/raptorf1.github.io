@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+<title>My First Website - Tests</title>
+</head>
+
+<body>
+
+
+  
+      <p id="demo"></p>
+      <button onclick="push()">Pata me re file leme!!!</button>
+  
+  
+
+
+<script>
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.open('GET', 'https://www.bitstamp.net/api/v2/ticker/btcusd');
+xmlhttp.send();
+
+function push() {
+  var a = JSON.parse(xmlhttp.response);
+  b = Number(a["bid"]);
+  document.getElementById("demo").innerHTML = b
+  }
+
+</script>
+
+</body>
+</html>
