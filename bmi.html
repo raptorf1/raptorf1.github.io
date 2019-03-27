@@ -3,139 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 <title>My First Website - BMI Calculator</title>
-<style>
-* {
-  box-sizing: border-box;
-}
-
-a:hover {color: coral}
-
-button {
-  font: bold 16px Arial;
-  text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid rgb(226, 10, 10);
-  border-right: 1px solid rgb(226, 10, 10);
-  border-bottom: 1px solid rgb(226, 10, 10);
-  border-left: 1px solid rgb(226, 10, 10);
-  cursor: pointer;
-}
-
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-[class*="col-"] {
-  float: left;
-  padding: 15px;
-}
-
-html {
-  font-family: "Lucida Sans", sans-serif;
-}
-
-.header {
-  background-color: #9933cc;
-  color: #ffffff;
-  padding: 1px;
-  text-align: center;
-  position: sticky;
-  top: 0
-}
-
-.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li {
-  padding: 8px;
-  margin-bottom: 7px;
-  background-color: #33b5e5;
-  color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-.menu li:hover {
-  background-color: #0099cc;
-}
-
-.aside {
-  background-color: #33b5e5;
-  padding: 15px;
-  color: #ffffff;
-  text-align: center;
-  font-size: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-.footer {
-  background-color: #9933cc;
-  color: #ffffff;
-  text-align: left;
-  font-size: 16px;
-  padding: 1px;
-  position: sticky;
-  bottom: 0;
-}
-
-/* For mobile phones: */
-[class*="col-"] {
-  width: 100%;
-}
-
-@media only screen and (min-width: 600px) {
-  /* For tablets: */
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
-}
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-}
-
-input[type=number]:focus {background-color: yellow;}
-
-input[type=button] {
-  background-color: green;
-  color: white;
-  font: bold 16px Arial;
-  text-decoration: none;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid whitesmoke;
-  border-right: 1px solid whitesmoke;
-  border-bottom: 1px solid whitesmoke;
-  border-left: 1px solid whitesmoke;
-  cursor: pointer;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="my1stwebsite.css">
+<script src="bmi.js"></script>
 </head>
 <body>
 
@@ -217,11 +86,11 @@ input[type=button] {
     <img border="3" alt="GitHub Profile" src="github.png" width="30" height="30">
     </a>
 
-  <img src="https://www.codewars.com/users/raptorf1/badges/micro" alt="Codewars Badge" height="30"</img>
+  <img src="https://www.codewars.com/users/raptorf1/badges/micro" alt="Codewars Badge" height="30" style="float:right"></img>
 </div>
 
 <script>
-  var inputmet = document.getElementById("metheight");
+var inputmet = document.getElementById("metheight");
   inputmet.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
@@ -229,7 +98,7 @@ input[type=button] {
       }
   });
 
-  var inputimpf = document.getElementById("impheightf");
+var inputimpf = document.getElementById("impheightf");
   inputimpf.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
@@ -237,78 +106,13 @@ input[type=button] {
       }
   });
 
-  var inputimpi = document.getElementById("impheighti");
+var inputimpi = document.getElementById("impheighti");
   inputimpi.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
       document.getElementById("impbutton").click();
       }
   });
-
-  function messageMET() {
-    var weight = document.getElementById("metweight").value;
-    var height = document.getElementById("metheight").value;
-    var w = Number(weight);
-    var h = Number(height);
-      
-    if (w < 0 || h < 0 || w == 0 || h == 0) {
-      alert("Please put numbers greater than 0 in both fields!");
-    }
-
-    if (w > 0 && h > 0) {
-      var bmimet = w / (h / 100 * h / 100);
-      var finalbmimet = parseFloat(bmimet.toFixed(2));
-      ifmessagemetric();
-    }
-
-    function ifmessagemetric() {
-    if (finalbmimet == 0) {alert ("Please put realistic numbers!");}
-    if (finalbmimet > 0 && finalbmimet < 18.5) {alert ("Your BMI is " + finalbmimet + " and your status is Underweight. Pay regular visits to your fridge.");}
-    if (finalbmimet == 18.5) {alert("Your BMI is " + finalbmimet + " and your status is Healthy. Right on! Kudos my friend!");}
-    if (finalbmimet > 18.5 && finalbmimet < 25) {alert("Your BMI is " + finalbmimet + " and your status is Healthy. Right on! Kudos my friend!");}
-    if (finalbmimet == 25) {alert("Your BMI is " + finalbmimet + " and your status is Overweight. Time for the gym subscription you always talked about.");}
-    if (finalbmimet > 25 && finalbmimet < 30) {alert("Your BMI is " + finalbmimet + " and your status is Overweight. Time for the gym subscription you always talked about.");}
-    if (finalbmimet == 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese. Go spend one year at the nearest monastery.");}
-    if (finalbmimet > 30) {alert("Your BMI is " + finalbmimet + " and your status is Obese. Go spend one year at the nearest monastery.");}
-    }
-
-    window.location.reload(true);
-  }
-
-  function messageIMP() {
-    var weightimp = document.getElementById("impweight").value;
-    var heightimpf = document.getElementById("impheightf").value;
-    var heightimpi = document.getElementById("impheighti").value;
-    var wimp = Number(weightimp);
-    var himpf = Number(heightimpf);
-    var himpi = Number(heightimpi);
-      
-    if (wimp < 0 || himpf < 0 || wimp == 0 || himpf == 0 || himpi < 0) {
-      alert("Please put numbers greater than 0 in the weight and feet height fields!");
-    }
-
-    if (wimp > 0 && himpf > 0) {
-      var finalimpheightinches = himpf * 12 + himpi;
-      var finalimpweightpounds = wimp * 703;
-      var bmiimp = finalimpweightpounds / (finalimpheightinches * finalimpheightinches);
-      var finalbmiimp = parseFloat(bmiimp.toFixed(2));
-      ifmessageimperial();
-    }
-
-    function ifmessageimperial() {
-    if (finalbmiimp == 0) {alert ("Please put realistic numbers!");}
-    if (finalbmiimp > 0 && finalbmiimp < 18.5) {alert ("Your BMI is " + finalbmiimp + " and your status is Underweight. Pay regular visits to your fridge.");}
-    if (finalbmiimp == 18.5) {alert("Your BMI is " + finalbmiimp + " and your status is Healthy. Right on! Kudos my friend!");}
-    if (finalbmiimp > 18.5 && finalbmiimp < 25) {alert("Your BMI is " + finalbmiimp + " and your status is Healthy. Right on! Kudos my friend!");}
-    if (finalbmiimp == 25) {alert("Your BMI is " + finalbmiimp + " and your status is Overweight. Time for the gym subscription you always talked about.");}
-    if (finalbmiimp > 25 && finalbmiimp < 30) {alert("Your BMI is " + finalbmiimp + " and your status is Overweight. Time for the gym subscription you always talked about.");}
-    if (finalbmiimp == 30) {alert("Your BMI is " + finalbmiimp + " and your status is Obese. Go spend one year at the nearest monastery.");}
-    if (finalbmiimp > 30) {alert("Your BMI is " + finalbmiimp + " and your status is Obese. Go spend one year at the nearest monastery.");}
-    }
-
-    window.location.reload(true);
-  }
-
 </script>
 
 </body>
